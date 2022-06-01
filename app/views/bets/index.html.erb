@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mis Apuestas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Partido</th>
+      <th>Goles Local</th>
+      <th>Goles Visita</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bets.each do |bet| %>
+      <tr>
+        <td><%= bet.match.start_time %></td>
+        <td><%= @teams.find(bet.match.home_id).seudo %> -  <%=@teams.find(bet.match.vis_id).seudo%></td>
+        <td><%= bet.home_goals %></td>
+        <td><%= bet.visitor_goals %></td>
+        <td><%= link_to 'Show', bet %></td>
+        <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
+        <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= @users %>
+<br>
+<%= link_to 'New Bet', new_bet_path %>

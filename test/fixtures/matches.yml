@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  home_id: 1
+  vis_id: 1
+  home_goals: 1
+  vis_goals: 1
+  start_time: 2022-05-31 20:07:26
+  status: MyString
+
+two:
+  home_id: 1
+  vis_id: 1
+  home_goals: 1
+  vis_goals: 1
+  start_time: 2022-05-31 20:07:26
+  status: MyString

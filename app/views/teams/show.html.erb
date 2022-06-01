@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre club:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Nombre corto:</strong>
+  <%= @team.seudo %>
+</p>
+
+<p>
+  <strong>Año de fundación:</strong>
+  <%= @team.year_funded %>
+</p>
+
+<p>
+  <strong>Títulos Primera División:</strong>
+  <%= @team.championships %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @team.description %>
+</p>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>
