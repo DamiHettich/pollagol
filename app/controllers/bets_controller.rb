@@ -4,9 +4,7 @@ class BetsController < ApplicationController
   # GET /bets or /bets.json
   def index
     @bets = Bet.all
-    @teams = Team.all
     @users = User.all.inspect
-
   end
 
   # GET /bets/1 or /bets/1.json

@@ -17,7 +17,7 @@
     <% @bets.each do |bet| %>
       <tr>
         <td><%= bet.match.start_time %></td>
-        <td><%= @teams.find(bet.match.home_id).seudo %> -  <%=@teams.find(bet.match.vis_id).seudo%></td>
+        <td><%= bet.pseudo_match %></td>
         <td><%= bet.home_goals %></td>
         <td><%= bet.visitor_goals %></td>
         <td><%= link_to 'Show', bet %></td>
