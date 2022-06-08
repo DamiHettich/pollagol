@@ -23,9 +23,7 @@
     <%= form.select :vis_id,  options %>
   </div>
 
-  <%
-=begin%>
- <div class="field">
+  <div class="field">
     <%= form.label :home_goals %>
     <%= form.number_field :home_goals %>
   </div>
@@ -33,9 +31,7 @@
   <div class="field">
     <%= form.label :vis_goals %>
     <%= form.number_field :vis_goals %>
-  </div> 
-<%
-=end%>
+  </div>
 
   <div class="field">
     <%= form.label :start_time %>
@@ -44,7 +40,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status, :value => "Programado" %>
+    <%= form.text_field :status %>
   </div>
 
   <div class="actions">

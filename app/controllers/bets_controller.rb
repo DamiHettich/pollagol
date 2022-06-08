@@ -3,8 +3,11 @@ class BetsController < ApplicationController
 
   # GET /bets or /bets.json
   def index
-    @bets = Bet.all
-    @users = User.all.inspect
+    if current_user.id == 1
+      @bets = Bet.all
+    else
+      @bets = Bet.where("user_id = :user", {user: current_user.id.to_s})
+    end
   end
 
   # GET /bets/1 or /bets/1.json
@@ -14,6 +17,10 @@ class BetsController < ApplicationController
   # GET /bets/new
   def new
     @bet = Bet.new
+    @matches = Match.all
+    if params
+      @custom_params = params[:match_info]
+    end
   end
 
   # GET /bets/1/edit
