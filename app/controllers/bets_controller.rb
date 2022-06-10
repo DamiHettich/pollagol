@@ -3,7 +3,7 @@ class BetsController < ApplicationController
 
   # GET /bets or /bets.json
   def index
-    if current_user.id == 1
+    if current_user.admin?
       @bets = Bet.all
     else
       @bets = Bet.where("user_id = :user", {user: current_user.id.to_s})
@@ -25,6 +25,7 @@ class BetsController < ApplicationController
 
   # GET /bets/1/edit
   def edit
+    @matches = Match.all
   end
 
   # POST /bets or /bets.json
@@ -33,8 +34,8 @@ class BetsController < ApplicationController
 
     respond_to do |format|
       if @bet.save
-        format.html { redirect_to bet_url(@bet), notice: "Bet was successfully created." }
-        format.json { render :show, status: :created, location: @bet }
+        format.html { redirect_to matches_url, notice: "Bet was successfully created." }
+        #format.json { render :show, status: :created, location: @bet }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @bet.errors, status: :unprocessable_entity }

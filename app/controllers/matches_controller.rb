@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   # GET /matches or /matches.json
   def index
     @matches = Match.all
-    
+    @bets = Bet.all
   end
 
   # GET /matches/1 or /matches/1.json
@@ -15,11 +15,13 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @all_teams = Team.all
+    @enums = Match.status_enums
   end
 
   # GET /matches/1/edit
   def edit
     @all_teams = Team.all
+    @enums = Match.status_enums
   end
 
   # POST /matches or /matches.json
@@ -68,6 +70,6 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.require(:match).permit(:home_id, :vis_id, :home_goals, :vis_goals, :start_time, :status)
+      params.require(:match).permit(:home_id, :vis_id, :home_goals, :vis_goals, :start_time, :status_enum)
     end
 end

@@ -44,7 +44,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status, :value => "Programado" %>
+    <%= form.select :status_enum, options_for_select(@enums.keys)%>
   </div>
 
   <div class="actions">

@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= form.label "Equipo Local  " %>
-    <% options = options_from_collection_for_select(@all_teams, 'id', 'name') %>
+    <% options = options_from_collection_for_select(@all_teams, 'id', 'name', @all_teams.find(@match.home_id).id) %>
     <%= form.select :home_id,  options %>
   </div>
   
   <div class="field">
     <%= form.label "Equipo Visitante" %>
-    <% options = options_from_collection_for_select(@all_teams, 'id', 'name') %>
+    <% options = options_from_collection_for_select(@all_teams, 'id', 'name', @all_teams.find(@match.vis_id).id) %>
     <%= form.select :vis_id,  options %>
   </div>
 
@@ -40,7 +40,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status_enum, options_for_select(@enums.keys)%>
   </div>
 
   <div class="actions">
