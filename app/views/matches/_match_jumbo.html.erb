@@ -1,0 +1,39 @@
+<div class="col">
+    <% if match.allows_bets? %>
+        <div class="card  border-secondary mb-3 ">
+            <div class="card-header"> 
+                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
+                <% if match.already_has_bet_by_user?(current_user) %>  
+                    <p class="card-text"><small class="text-muted"> Mi apuesta: (<%= match.get_user_bet(current_user).home_goals %>) - (<%= match.get_user_bet(current_user).visitor_goals %>)  </small> </p>
+                    <%= link_to 'Modificar apuesta', edit_bet_path(:id => match.get_user_bet(current_user), :match_id => match.id), :class => "btn btn-secondary" %>
+                <% else %>
+                    <p class="card-text"><small class="text-muted">No has hecho apuestas. ¡Aún hay tiempo! </small></p>
+                    <%= link_to 'Nueva apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary" %>
+                <% end %>
+    <% else%>
+        <div class="card">
+            <div class="card-header text-secondary"> 
+                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
+            </div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
+                <% if match.already_has_bet_by_user?(current_user) %>  
+                    <p class="card-text"><small class="text-muted"> Mi apuesta: (<%= match.get_user_bet(current_user).home_goals %>) - (<%= match.get_user_bet(current_user).visitor_goals %>)  </small> </p>
+                
+                    <%= link_to 'Modificar apuesta', edit_bet_path(:id => match.get_user_bet(current_user), :match_id => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
+                <% else %>
+                    <p class="card-text"><small class="text-muted">No has hecho apuestas. </small></p>
+                    <%= link_to 'Nueva apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
+                <% end %>
+    <% end%>
+                <% if  current_user.admin? %>  
+                    <%= link_to 'Actualizar', edit_match_path(match), :class => "btn btn-secondary" %>
+                    <%= link_to 'Eliminar', match, method: :delete, data: { confirm: 'Estás seguro de eliminar el partido?' }, :class => "btn btn-danger" %>
+                <% end%>
+            </div>
+        </div>
+</div>
+

@@ -12,43 +12,7 @@
     
     <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @matches.each do |match| %>
-      <div class="col">
-        <% if match.status_enum != "scheduled" %>
-          <div class="card">
-          <div class="card-header text-secondary"> 
-          <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
-          </div>
-          <div class="card-body text-secondary">
-            <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
-            <p class="card-text"><small class="text-muted"> <%= match.status_enum.capitalize %></small> </p>
-            <%= link_to 'Hacer apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
-
-
-
-
-
-        
-        <% else%>
-          <div class="card  border-secondary mb-3 ">
-          <div class="card-header"> 
-          <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
-            <p class="card-text"><small class="text-muted"> <%= match.status_enum.capitalize %></small> </p>
-            
-            <%= link_to 'Hacer apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary" %>
-          
-
-        <% end%>
-            <% if  current_user.admin? %>  
-              <%= link_to 'Detalles', match, :class => "btn btn-secondary" %>
-              <%= link_to 'Editar', edit_match_path(match), :class => "btn btn-secondary" %>
-              <%= link_to 'Eliminar', match, method: :delete, data: { confirm: 'Estás seguro de eliminar el partido?' }, :class => "btn btn-danger" %>
-            <% end%>
-          </div>
-        </div>
-      </div>
+      <%= render 'match_jumbo', match: match, bets: @bets %>
     <% end %>
     </div>
     <br>

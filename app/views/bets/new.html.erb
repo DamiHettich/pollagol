@@ -1,10 +1,19 @@
 <h3>Nueva apuesta: <br></h3>
-<h1><%= @matches.find(@custom_params).dynamic_title_str %> </h1>
+<h1> </h1>
 
-<h2> <%= @matches.find(@custom_params).start_time.to_formatted_s %> </h2>
+<h2>  </h2>
 
 <br>
+<div class="my-3 p-3 bg-white rounded box-shadow">
+    <h5 class="border-bottom border-gray pb-2 mb-0">Ingresa tu apuesta para: <br><br>
+    <%= @matches.find(@custom_params).dynamic_title_str %></h5>
+    <small class="text-muted"> <%= @matches.find(@custom_params).start_time.to_formatted_s(:short) %></small>
 
-<%= render 'form', bet: @bet %>
+    <div class="media text-muted">    
+    Debes ingresar tu predicción de goles para este partido 
+    </div><br>
+    <%= render "form", bet: @bet%>
 
-<%= link_to 'Back', matches_path %>
+</div>
+<br>
+<%= link_to 'Cancelar', matches_path, class: "btn btn-sm btn-danger" %>

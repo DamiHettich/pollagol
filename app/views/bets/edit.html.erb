@@ -1,6 +1,8 @@
-<h1>Editing Bet</h1>
+<h1>Editar apuesta</h1>
+<h3>(<%= @matches.find(params[:match_id]).start_time.to_formatted_s(:short) %> ) </h3>
+<h3><%= @matches.find(params[:match_id]).dynamic_title_str %></h3>
 
-<%= render 'form', bet: @bet %>
 
-<%= link_to 'Show', @bet %> |
-<%= link_to 'Back', bets_path %>
+<%= render 'edit_form', bet: @bet %>
+
+<%= link_to 'Back', matches_path %>

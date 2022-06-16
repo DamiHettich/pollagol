@@ -6,6 +6,8 @@ class Match < ApplicationRecord
 
     enum status_enum: [:scheduled, :started, :finished, :rescheduled]
 
+    scope :reversed, -> { order(:start_time).reverse_order }
+
     validate :teams_not_equal
 
     def short_name
@@ -35,6 +37,18 @@ class Match < ApplicationRecord
         home = Team.find(home_team.id).name
         vis = Team.find(visitor_team.id).name
         return home, vis #"#{home} - #{vis}"
+    end
+
+    def allows_bets?
+        start_time > Time.now
+    end
+
+    def already_has_bet_by_user?(my_user)
+        Bet.where("user_id==#{my_user.id} AND match_id==#{id}").size>0
+    end
+
+    def get_user_bet(my_user)
+        Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
     end
 
     def teams_not_equal

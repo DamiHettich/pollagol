@@ -12,4 +12,6 @@ class Bet < ApplicationRecord
         vis = Team.find(match.vis_id).seudo
         return "#{home} - #{vis}"
     end
+
+    
 end

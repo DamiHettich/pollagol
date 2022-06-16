@@ -18,7 +18,7 @@ class BetsController < ApplicationController
   def new
     @bet = Bet.new
     @matches = Match.all
-    if params
+    if params[:match_info]
       @custom_params = params[:match_info]
     end
   end
@@ -45,9 +45,11 @@ class BetsController < ApplicationController
 
   # PATCH/PUT /bets/1 or /bets/1.json
   def update
+    @matches = Match.all
+    @custom_params = bet_params
     respond_to do |format|
       if @bet.update(bet_params)
-        format.html { redirect_to bet_url(@bet), notice: "Bet was successfully updated." }
+        format.html { redirect_to matches_path, notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else
         format.html { render :edit, status: :unprocessable_entity }

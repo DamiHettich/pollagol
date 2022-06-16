@@ -27,18 +27,25 @@
     <%= form.select :match_id,  options %>
   </div>
 <% end %>
-
-  <div class="field">
-    <%= form.label :home_goals %>
-    <%= form.number_field :home_goals %>
+<div class="row">
+  <div class="col-3">
+    <div class="field">
+      <% loc = @matches.find(@custom_params).home_away_names[0] %>
+      <%= form.label "Goles #{loc}" %><br>
+      <%= form.number_field :home_goals, class: "form-control mx-sm-3", placeholder: "Goles Local"  %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :visitor_goals %>
-    <%= form.number_field :visitor_goals %>
+  <div class="col-3">
+    <div class="field">
+    
+    <% vis = @matches.find(@custom_params).home_away_names[1].capitalize %>
+      <%= form.label "Goles #{vis}"%><br>
+      <%= form.number_field :visitor_goals, class: "form-control mx-sm-3", placeholder: "Goles Visita" %>
+    </div>
   </div>
-
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <br>
+    <%= form.submit class: "btn btn-primary btn-block"%>
   </div>
 <% end %>
