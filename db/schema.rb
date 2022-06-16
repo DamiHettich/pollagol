@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_163006) do
+ActiveRecord::Schema.define(version: 2022_06_16_191218) do
 
   create_table "bets", force: :cascade do |t|
     t.integer "home_goals"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2022_06_09_163006) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status_enum"
+    t.integer "week_nr"
+    t.integer "polla_id"
+  end
+
+  create_table "pollas", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "exact_goals_points"
+    t.integer "winner_points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "teams", force: :cascade do |t|

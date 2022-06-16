@@ -3,8 +3,9 @@ class MatchesController < ApplicationController
 
   # GET /matches or /matches.json
   def index
-    @matches = Match.all.reversed
+    @matches = Match.where("start_time <= ?", DateTime.now + 20).reversed
     @bets = Bet.all
+    @polla = Polla.find(1)
   end
 
   # GET /matches/1 or /matches/1.json

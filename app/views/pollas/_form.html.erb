@@ -1,0 +1,37 @@
+<%= form_with(model: polla) do |form| %>
+  <% if polla.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(polla.errors.count, "error") %> prohibited this polla from being saved:</h2>
+
+      <ul>
+        <% polla.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exact_goals_points %>
+    <%= form.number_field :exact_goals_points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :winner_points %>
+    <%= form.number_field :winner_points %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @polla.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @polla.description %>
+</p>
+
+<p>
+  <strong>Exact goals points:</strong>
+  <%= @polla.exact_goals_points %>
+</p>
+
+<p>
+  <strong>Winner points:</strong>
+  <%= @polla.winner_points %>
+</p>
+
+<%= link_to 'Edit', edit_polla_path(@polla) %> |
+<%= link_to 'Back', pollas_path %>

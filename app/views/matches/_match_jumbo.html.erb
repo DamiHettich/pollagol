@@ -22,7 +22,9 @@
                 <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
                 <% if match.already_has_bet_by_user?(current_user) %>  
                     <p class="card-text"><small class="text-muted"> Mi apuesta: (<%= match.get_user_bet(current_user).home_goals %>) - (<%= match.get_user_bet(current_user).visitor_goals %>)  </small> </p>
-                
+                    <% if match.home_goals && match.vis_goals%>
+                    <p class="card-text"><small class="text-muted"> Mi resultado: <%= match.guessed_goals_points(current_user) + match.guessed_winner_points(current_user)  %> PUNTOS </small> </p>
+                    <% end %>
                     <%= link_to 'Modificar apuesta', edit_bet_path(:id => match.get_user_bet(current_user), :match_id => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
                 <% else %>
                     <p class="card-text"><small class="text-muted">No has hecho apuestas. </small></p>
