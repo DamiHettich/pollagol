@@ -4,6 +4,7 @@ class Match < ApplicationRecord
     belongs_to :pollas, class_name:'Polla', foreign_key:'polla_id'
 
     has_many :users, through: :bets
+    has_many :bets
     
 
     enum status_enum: [:scheduled, :started, :finished, :rescheduled]
@@ -36,8 +37,8 @@ class Match < ApplicationRecord
     end
 
     def home_away_names
-        home = Team.find(home_team.id).name
-        vis = Team.find(visitor_team.id).name
+        home = Team.find(home_team.id).name.capitalize
+        vis = Team.find(visitor_team.id).name.capitalize
         return home, vis #"#{home} - #{vis}"
     end
 
@@ -50,23 +51,25 @@ class Match < ApplicationRecord
     end
 
     def get_user_bet(my_user)
-        Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
+        return Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
     end
 
     def guessed_winner_points(my_user)
-        bet = Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
+        bet = get_user_bet(my_user)
         real_result = home_goals - vis_goals
         my_result = bet.home_goals - bet.visitor_goals
         if real_result == 0 && my_result==0
             return Polla.find(1).winner_points
         elsif real_result*my_result > 0
             return Polla.find(1).winner_points
+        else
+            return 0
         end
     end
 
     def guessed_goals_points(my_user)
         total = 0
-        bet = Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
+        bet = get_user_bet(my_user)
         if bet.home_goals == home_goals
             total = total + Polla.find(1).exact_goals_points
         end
@@ -78,6 +81,6 @@ class Match < ApplicationRecord
     end
 
     def teams_not_equal
-        errors.add(:home_id, "Same home and away team") unless home_id != vis_id
+        errors.add(:home_id, "same as away team") unless home_id != vis_id
     end
 end

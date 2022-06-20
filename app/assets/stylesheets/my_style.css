@@ -72,3 +72,62 @@
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+
+.content-info {
+  background: #f9f9f9;
+  padding: 40px 0;
+  background-size: cover!important;
+  background-position: top center!important;
+  background-repeat: no-repeat!important;
+  position: relative;
+ padding-bottom:100px;
+}
+
+table {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dedede;
+}
+
+table thead th {
+  padding: 20px;
+  color: #000;
+}
+
+.text-left {
+  text-align: left!important;
+}
+
+
+
+#score-table {
+  padding: 10px 20px;
+  border: 1px solid #b1b1b1;
+}
+
+#header-score {
+  padding: 20px;
+  color:white;
+  text-align: left!important;
+  border: 1px solid #b1b1b1;
+}
+
+#score-board-header {
+  line-height: 15px;
+  min-height: 15px;
+  height: 15px;
+  background-color:#1f9940;
+  color:white;
+  padding: 10px 20px;
+  border: 1px solid #b1b1b1;
+} 
+
+#score-board {
+  line-height: 15px;
+  min-height: 15px;
+  height: 15px;
+  background-color:#e6e6e6;
+  color:rgb(29, 29, 29);
+  padding: 10px 20px;
+  border: 1px solid #b1b1b1;
+}

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :matches, through: :bets
+  has_many :bets
 
   def admin?
     return id == 1

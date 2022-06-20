@@ -1,0 +1,27 @@
+<div class="container col-6">
+    <div class="card  border-secondary mb-3 ">
+        <div class="card-header"> 
+            <h3>Resultados parciales</h3>
+        </div>
+        <div class="card-body">
+            <table class="table-responsive table-hover" id="score-table">
+                <thead class="point-table-head">
+                    <tr id='score-board-header'>
+                    <th id="header-score">Usuario</th>
+                    <th id="header-score">Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.each do |user| %>
+                    <tr id='score-board'>
+                        <td id="score-table"><%= user.email %></td>
+                        <td id="score-table"><%= user.bets.pluck(:points).map{ |x| x|| 0 }.sum %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+            
+</div>
+

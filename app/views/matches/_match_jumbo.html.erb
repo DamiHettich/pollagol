@@ -11,7 +11,7 @@
                     <%= link_to 'Modificar apuesta', edit_bet_path(:id => match.get_user_bet(current_user), :match_id => match.id), :class => "btn btn-secondary" %>
                 <% else %>
                     <p class="card-text"><small class="text-muted">No has hecho apuestas. ¡Aún hay tiempo! </small></p>
-                    <%= link_to 'Nueva apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary" %>
+                    <%= link_to 'Nueva apuesta', new_bet_path(:match_id => match.id), :class => "btn btn-secondary" %>
                 <% end %>
     <% else%>
         <div class="card">
@@ -28,7 +28,7 @@
                     <%= link_to 'Modificar apuesta', edit_bet_path(:id => match.get_user_bet(current_user), :match_id => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
                 <% else %>
                     <p class="card-text"><small class="text-muted">No has hecho apuestas. </small></p>
-                    <%= link_to 'Nueva apuesta', new_bet_path(:match_info => match.id), :class => "btn btn-secondary disabled", :disabled => true %>
+                    <%= link_to 'Nueva apuesta', new_bet_path(match), :class => "btn btn-secondary disabled", :disabled => true %>
                 <% end %>
     <% end%>
                 <% if  current_user.admin? %>  

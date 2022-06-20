@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= form.hidden_field :polla_id , :value => "1"%>
+  </div>
+
+  <div class="field">
     <%= form.label "Equipo Local  " %>
     <% options = options_from_collection_for_select(@all_teams, 'id', 'name', @all_teams.find(@match.home_id).id) %>
     <%= form.select :home_id,  options %>

@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h1>Partidos PollaGol</h1>
-  <br>
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-color: #1f993f;">
+       <%= image_tag("logo_planvital.png", class: "mr-3", style:'height:85px; width:auto;') %>
+    <div class="lh-100">
+      <h4 class="mb-0 text-white lh-100" > Partidos</h4>
+    </div>
+  </div>
   <% if  current_user.admin? %>  
   <%= link_to 'Ingresar Nuevo Partido', new_match_path, :class => "btn btn-primary" %>
   <br><br>
@@ -9,11 +13,12 @@
   <% end %>  
   
   <h4>Selecciona un partido para hacer tu apuesta</h4>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @matches.each do |match| %>
+        <%= render 'match_jumbo', match: match, bets: @bets %>
+      <% end %>
+      </div>
     
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-    <% @matches.each do |match| %>
-      <%= render 'match_jumbo', match: match, bets: @bets %>
-    <% end %>
-    </div>
     <br>
 </div>

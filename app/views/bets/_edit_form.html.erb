@@ -19,18 +19,25 @@
   <div class="field">
     <%= form.hidden_field :match_id, :value => bet.match_id%>
   </div>
-
-  <div class="field">
-    <%= form.label :home_goals %>
-    <%= form.number_field :home_goals %>
+  
+<div class="row">
+  <div class="col-3">
+      <div class="field">
+        <% names = @matches.find(params[:match_id]).home_away_names %>
+        <%= form.label "Goles #{names[0]}" %><br>
+        <%= form.number_field :home_goals, class:"form-control mx-sm-3",placeholder: "Goles Local" %>
+      </div>
+    </div>
+  <div class="col-3">
+    <div class="field">
+      <%= form.label "Goles #{names[1]}" %>
+      <%= form.number_field :visitor_goals, class:"form-control mx-sm-3", placeholder: "Goles Visita" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :visitor_goals %>
-    <%= form.number_field :visitor_goals %>
-  </div>
-
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <br>
+    <%= form.submit class: "btn btn-primary btn-block" %>
   </div>
+</div>
 <% end %>

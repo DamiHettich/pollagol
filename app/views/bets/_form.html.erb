@@ -18,7 +18,7 @@
 
 <% if @custom_params %>
   <div class="field">
-    <%= form.hidden_field :match_id, :value => @custom_params[0]%>
+    <%= form.hidden_field :match_id, :value => @custom_params%>
   </div>
 <% else %>
   <div class="field">
@@ -30,16 +30,14 @@
 <div class="row">
   <div class="col-3">
     <div class="field">
-      <% loc = @matches.find(@custom_params).home_away_names[0] %>
-      <%= form.label "Goles #{loc}" %><br>
+      <% names = @matches.find(@custom_params).home_away_names %>
+      <%= form.label "Goles #{names[0]}" %><br>
       <%= form.number_field :home_goals, class: "form-control mx-sm-3", placeholder: "Goles Local"  %>
     </div>
   </div>
   <div class="col-3">
     <div class="field">
-    
-    <% vis = @matches.find(@custom_params).home_away_names[1].capitalize %>
-      <%= form.label "Goles #{vis}"%><br>
+      <%= form.label "Goles #{names[1]}"%><br>
       <%= form.number_field :visitor_goals, class: "form-control mx-sm-3", placeholder: "Goles Visita" %>
     </div>
   </div>
@@ -48,4 +46,5 @@
     <br>
     <%= form.submit class: "btn btn-primary btn-block"%>
   </div>
+</div>
 <% end %>

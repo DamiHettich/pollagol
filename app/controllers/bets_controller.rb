@@ -3,11 +3,9 @@ class BetsController < ApplicationController
 
   # GET /bets or /bets.json
   def index
-    if current_user.admin?
       @bets = Bet.all
-    else
-      @bets = Bet.where("user_id = :user", {user: current_user.id.to_s})
-    end
+      @matches = Match.where("start_time <= ?", DateTime.now + 20).reversed
+      @users = User.all
   end
 
   # GET /bets/1 or /bets/1.json
@@ -18,8 +16,8 @@ class BetsController < ApplicationController
   def new
     @bet = Bet.new
     @matches = Match.all
-    if params[:match_info]
-      @custom_params = params[:match_info]
+    if params[:match_id]
+      @custom_params = params[:match_id]
     end
   end
 
@@ -31,7 +29,10 @@ class BetsController < ApplicationController
   # POST /bets or /bets.json
   def create
     @bet = Bet.new(bet_params)
-
+    @matches = Match.all
+    if params[:match_id]
+      @custom_params = params[:match_id]
+    end
     respond_to do |format|
       if @bet.save
         format.html { redirect_to matches_url, notice: "Bet was successfully created." }

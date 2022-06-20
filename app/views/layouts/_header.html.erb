@@ -16,19 +16,18 @@
         <li class="nav-item">
           <%= link_to "Partidos", matches_path, class:"nav-link"%>
         </li>
-
+        <li class="nav-item">
+            <%= link_to "Apuestas", bets_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Equipos", teams_path, class:"nav-link"%>
+        </li>
+        
         <%if current_user.admin? %>
           <li class="nav-item">
             <%= link_to "Polla", pollas_path, class:"nav-link"%>
           </li>
 
-          <li class="nav-item">
-            <%= link_to "Apuestas", bets_path, class:"nav-link"%>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to "Equipos", teams_path, class:"nav-link"%>
-          </li>
         <%end%>
         <li class="nav-item">
           <%= link_to "Cerrar sesión", destroy_user_session_path, method: "Delete", class:"nav-link"%>

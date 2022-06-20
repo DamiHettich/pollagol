@@ -1,19 +1,24 @@
-<h3>Nueva apuesta: <br></h3>
-<h1> </h1>
 
-<h2>  </h2>
+<div class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-color: #1f993f;">
+      <%= image_tag("logo_planvital.png", class: "mr-3", style:'height:85px; width:auto;') %>
+      <div class="lh-100">
+          <h4 class="mb-0 text-white lh-100" >Nueva Apuesta</h4>
+      </div>
+    </div>
 
-<br>
-<div class="my-3 p-3 bg-white rounded box-shadow">
-    <h5 class="border-bottom border-gray pb-2 mb-0">Ingresa tu apuesta para: <br><br>
-    <%= @matches.find(@custom_params).dynamic_title_str %></h5>
-    <small class="text-muted"> <%= @matches.find(@custom_params).start_time.to_formatted_s(:short) %></small>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h5 class="border-bottom border-gray pb-2 mb-0">
+        <%= @matches.find(params[:match_id]).dynamic_title_str %></h5>
+        <small class="text-muted"> <%= @matches.find(params[:match_id]).start_time.to_formatted_s(:short) %></small>
 
-    <div class="media text-muted">    
-    Debes ingresar tu predicción de goles para este partido 
-    </div><br>
-    <%= render "form", bet: @bet%>
+        <div class="media text-muted">    
+        Debes ingresar tu predicción de goles para este partido 
+        </div><br>
+        <%= render "form", bet: @bet%>
 
+    
+    <br>
+    <%= link_to 'Cancelar', matches_path, class: "btn btn-sm btn-danger" %>
+    </div>
 </div>
-<br>
-<%= link_to 'Cancelar', matches_path, class: "btn btn-sm btn-danger" %>
