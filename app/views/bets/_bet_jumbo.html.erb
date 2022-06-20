@@ -22,8 +22,9 @@
                         <td><%= filtereds.visitor_goals %></td>
                         <td><%= filtereds.points%></td>
                         <% if filtereds.user_id == current_user.id %>
-                        
-                            <td><%= link_to 'Eliminar', filtereds, method: :delete, class: "btn btn-link btn-sm px-3"%> </td>
+                            <td><%= link_to 'Eliminar', filtereds, method: :delete%> </td>
+                        <% else %>
+                            <td>  </td>
                         <% end %>
                         
                     </tr>
