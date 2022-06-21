@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'devise', '~> 4.2'
 gem 'net-smtp', '~> 0.2.1'
+gem 'net-pop', '~> 0.1.0'
 gem 'jquery-rails'
 
 # Use Active Storage variant
