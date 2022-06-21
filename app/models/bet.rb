@@ -19,7 +19,7 @@ class Bet < ApplicationRecord
 
 
     def get_user_bet(my_user, my_match)
-        Bet.find_by("user_id==#{my_user.id} AND match_id==#{my_match.id}")
+        Bet.find_by("user_id=#{my_user.id} AND match_id=#{my_match.id}")
     end
 
     def guessed_winner

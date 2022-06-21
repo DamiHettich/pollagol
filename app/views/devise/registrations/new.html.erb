@@ -1,4 +1,6 @@
-<h2>Sign up</h2>
+<%
+=begin%>
+ <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -24,6 +26,41 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
-
+<% end %> 
 <%= render "devise/shared/links" %>
+<%
+=end%>
+
+
+
+<div class="container">
+  <div class="row text-center justify-content-md-center">
+    <div class="col-4">
+    <br>
+      <img class="mb-4" src="https://is2-ssl.mzstatic.com/image/thumb/Purple124/v4/43/3c/11/433c114b-66c0-d50c-0c0c-5de93220f681/source/512x512bb.jpg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Regístrate en la PoshhaGol</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="form-control">
+          <%= f.label 'Ingrese su correo' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          <%= f.label "Contraseña" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <%= f.label "Confirme su contraseña" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          <br />
+        </div>
+          <br>
+          <div class="actions">
+          <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+        </div>  
+        <br>
+          <%= render "devise/shared/links" %>
+          <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+      <% end %>
+    </div>
+</div>

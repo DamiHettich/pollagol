@@ -47,11 +47,11 @@ class Match < ApplicationRecord
     end
 
     def already_has_bet_by_user?(my_user)
-        Bet.where("user_id==#{my_user.id} AND match_id==#{id}").size>0
+        Bet.where("user_id=#{my_user.id} AND match_id=#{id}").size>0
     end
 
     def get_user_bet(my_user)
-        return Bet.find_by("user_id==#{my_user.id} AND match_id==#{id}")
+        return Bet.find_by("user_id=#{my_user.id} AND match_id=#{id}")
     end
 
     def guessed_winner_points(my_user)
