@@ -2,7 +2,7 @@
     <% if match.allows_bets? %>
         <div class="card  border-secondary mb-3 ">
             <div class="card-header"> 
-                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
+                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5>Fecha <%= match.week_nr %> - <%= match.start_time.to_formatted_s(:short) %>
             </div>
             <div class="card-body">
                 <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
@@ -16,7 +16,9 @@
     <% else%>
         <div class="card">
             <div class="card-header text-secondary"> 
-                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5> <%= match.start_time.to_formatted_s(:short) %>
+                <h5><%=match.short_name[0]%> - <%=match.short_name[1]%></h5>
+                
+                Fecha <%= match.week_nr %> - <%= match.start_time.to_formatted_s(:short) %>
             </div>
             <div class="card-body text-secondary">
                 <h5 class="card-title"><%= match.dynamic_title_str %> </h5>
