@@ -4,7 +4,7 @@ class BetsController < ApplicationController
   # GET /bets or /bets.json
   def index
       @bets = Bet.all
-      @matches = Match.where("start_time <= ?", DateTime.now + 20).reversed
+      @matches = Match.where("start_time <= ?", DateTime.now + 14).reversed
       @users = User.all
   end
 
